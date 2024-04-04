@@ -1,0 +1,13 @@
+Příkazy použity k vygenerování databáze:
+
+create database usersDatabase;
+use usersDatabase;
+
+create table userData(
+ID INT unique auto_increment not null,
+Name varchar(100) not null,
+Surname varchar(100),
+PersonID varchar(12) unique not null,
+Uuid varchar(36) unique not null,
+primary key (ID)
+);
