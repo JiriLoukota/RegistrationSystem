@@ -1,15 +1,18 @@
-package Project2.RegistrationSystem;
+package Project2.RegistrationSystem.model;
 
 import java.util.UUID;
 
-public class User {
-    private String  name, surname, personID;
+public class DetailedUser {
+    private String name, surname, personId;
     private UUID uuid;
+    private int id;
 
-    public User(String name, String surname, String personID) {
+    public DetailedUser(String name, String surname, String personId, UUID uuid, int id) {
         this.name = name;
         this.surname = surname;
-        this.personID = personID;
+        this.personId = personId;
+        this.uuid = uuid;
+        this.id = id;
     }
 
     //region Getters and setters
@@ -30,12 +33,12 @@ public class User {
         this.surname = surname;
     }
 
-    public String getPersonID() {
-        return personID;
+    public String getPersonId() {
+        return personId;
     }
 
-    public void setPersonID(String personID) {
-        this.personID = personID;
+    public void setPersonId(String personId) {
+        this.personId = personId;
     }
 
     public UUID getUuid() {
@@ -46,6 +49,13 @@ public class User {
         this.uuid = uuid;
     }
 
+    public void setId(int id){
+        this.id = id;
+    }
+
+    public int getId() {
+        return id;
+    }
 
     //endregion
 }
