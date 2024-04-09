@@ -29,7 +29,7 @@ public class DatabaseManager{
         if(!checkPersonId(user.getPersonId())){
             throw new Exception("Incorrect person id");
         }
-        statement.execute("INSERT INTO usersdatabase.userdata(Name, Surname, PersonID, Uuid) VALUES('"+
+        statement.execute("INSERT INTO userdata(Name, Surname, PersonID, Uuid) VALUES('"+
               user.getName() +"', '"+ user.getSurname() + "', '"+ user.getPersonId() + "', '"+
               uuidGenerator.generateRandomUUID() + "')");
     }
@@ -64,7 +64,7 @@ public class DatabaseManager{
                     resultSet.getString("PersonID"), UUID.fromString(resultSet.getString("Uuid")),
                     resultSet.getInt("ID")));
         }
-            return Collections.singletonList(detailedUserList);
+        return Collections.singletonList(detailedUserList);
     }
     public void editUser(EditingUserInfo userInfo) throws SQLException{
         statement.execute("UPDATE userdata SET Name = '" + userInfo.getName() + "', Surname = '" +
@@ -76,7 +76,7 @@ public class DatabaseManager{
 
     private boolean checkPersonId(String personId) throws Exception{
         try(BufferedReader br = new BufferedReader(new FileReader(Constants.PERSON_ID_FILE_PATH))){
-            String correctPersonId ="";
+            String correctPersonId;
             while((correctPersonId = br.readLine())!=null){
                 if(personId.equals(correctPersonId)) return true;
             }
